@@ -1,0 +1,565 @@
+/* ==========================================================================
+   COE-Pay: Centralized Payment Authorization, Collection, and Monitoring System
+   Institution: ICCT Colleges Foundation, Inc. - College of Engineering
+   Theme: Institutional Forest Emerald & Warm Amber Edition
+   ========================================================================== */
+
+:root {
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Institutional Forest Emerald Palette */
+  --primary-navy: #022c22;       /* Deep Pine / Midnight Emerald */
+  --primary-blue: #047857;       /* Rich Emerald Green */
+  --primary-royal: #065f46;      /* Deep Forest Green */
+  --primary-hover: #064e3b;      /* Dark Forest Hover */
+  --primary-subtle: #ecfdf5;     /* Soft Mint Background */
+  
+  /* Brand Accent: Gold / Warm Amber */
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --accent-gold-subtle: #fef3c7;
+  
+  /* Neutrals */
+  --bg-page: #0f172a;            /* Dark Slate Backdrop */
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  
+  /* Status Colors */
+  --success: #10b981;
+  --success-subtle: #ecfdf5;
+  --success-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-subtle: #fffbeb;
+  --amber-border: #fde68a;
+  --danger: #ef4444;
+  --danger-subtle: #fef2f2;
+  --danger-border: #fecaca;
+  --indigo: #0d9488;             /* Teal Accent */
+  --indigo-subtle: #f0fdfa;
+  
+  /* Radius & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 30px -5px rgba(2, 44, 34, 0.25), 0 10px 15px -5px rgba(0, 0, 0, 0.1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   TOP GLOBAL NAVBAR
+   ========================================================================== */
+.top-navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+  color: #fde68a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(6, 78, 59, 0.25);
+}
+
+.brand-text h1 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.brand-text p {
+  font-size: 0.68rem;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.demo-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.demo-select {
+  background-color: #f8fafc;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.85rem;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.demo-select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+}
+
+.nav-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #f1f5f9;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+}
+
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #ffffff;
+}
+
+.nav-user-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.nav-user-sub {
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   2-COLUMN INSTITUTIONAL LOGIN LAYOUT (FOREST EMERALD)
+   ========================================================================== */
+#portal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+#portal-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.68) contrast(1.05);
+}
+
+#portal-backdrop .backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2, 44, 34, 0.88) 0%, rgba(15, 23, 42, 0.65) 50%, rgba(6, 78, 59, 0.82) 100%);
+  backdrop-filter: blur(2px);
+}
+
+#portal-login-grid {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1140px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 960px) {
+  #portal-login-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.login-hero-text h1 {
+  font-size: 3.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 0.75rem 0;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.login-hero-text .highlight-text {
+  background: linear-gradient(90deg, #6ee7b7 0%, #a7f3d0 50%, #fde68a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.login-hero-text p {
+  color: #d1fae5;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 520px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.campus-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(6, 78, 59, 0.75);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #a7f3d0;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+/* Glassmorphism Auth Card */
+.auth-glass-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
+}
+
+.auth-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 1.25rem;
+}
+
+.auth-tagline {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--primary-blue);
+  text-transform: uppercase;
+}
+
+.auth-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-top: 0.15rem;
+}
+
+.otp-digit-inputs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.otp-box-cell {
+  width: 100%;
+  height: 52px;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 900;
+  font-size: 1.35rem;
+  background-color: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  color: #0f172a;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.otp-box-cell:focus {
+  border-color: var(--primary-blue);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+}
+
+/* ==========================================================================
+   BUTTONS & FORMS (FOREST EMERALD & AMBER ACCENTS)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.28);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(4, 120, 87, 0.35);
+}
+
+.btn-success {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #047857;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-surface-alt);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border-color: #047857;
+  color: #047857;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ecfdf5;
+}
+
+.form-control, .form-select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.88rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: #f8fafc;
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-blue);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.18);
+}
+
+/* ==========================================================================
+   CARDS, TABLES, & DASHBOARDS
+   ========================================================================== */
+.main-wrapper {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.card-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #fafafc;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-navy);
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.6rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #a7f3d0;
+}
+
+.stat-card .stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+/* ==========================================================================
+   MODAL CONTROLLER (GLOBAL BACKDROP & ANIMATION)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 44, 34, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: none; /* <-- TIYAKING NAKA-NONE ITO PARA HINDI LUMABAS NANG KUSA */
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-dialog {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  max-width: 620px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: modalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  padding: 1.2rem 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8fafc;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-navy);
+}
+
+.modal-body {
+  padding: 1.75rem;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1rem 1.75rem;
+  border-top: 1px solid var(--border-color);
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   DEVELOPER IMPERSONATION BANNER
+   ========================================================================== */
+.dev-impersonation-banner {
+  background: linear-gradient(90deg, #78350f 0%, #92400e 50%, #b45309 100%);
+  color: #fef3c7;
+  padding: 0.65rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  border-bottom: 2px solid #f59e0b;
+  position: relative;
+  z-index: 99;
+}
